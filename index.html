@@ -7,7 +7,7 @@
   <meta name="description" content="JAH Automotive LLC in Baton Rouge. Call for auto repair and mobile mechanic availability, or send a service request.">
   <title>JAH Automotive | Baton Rouge Auto Repair</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101923'/%3E%3Cpath d='M12 44h40M18 38l5-13h18l5 13M25 43h1m12 0h1' fill='none' stroke='%23f7b74b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <header class="top"><div class="wrap"><a class="brand" href="#top">JAH <span>AUTOMOTIVE</span></a><nav aria-label="Main navigation"><a href="#services">Services</a><a href="#reviews">Reviews</a><a href="#contact" class="call">Request service</a></nav></div></header>
@@ -60,12 +60,35 @@
         </div>
       </div>
     </section>
-    <section class="section review" id="reviews"><div class="wrap"><div><div class="eyebrow">Customer feedback</div><h2>Hear from our customers.</h2><p>We’re grateful when customers share their experience. Read their reviews and see what it’s like to work with JAH.</p><a class="call" href="https://www.google.com/maps/search/?api=1&query=Jah+Automotive+Llc+982+Columbus+Dunn+Dr+Baton+Rouge+LA" target="_blank" rel="noopener">Read reviews on Google ↗</a></div><div><blockquote>“They took me in at last minute and fixed it at last minute.”</blockquote><small>Customer review on Google</small></div></div></section>
+    <section class="section review" id="reviews">
+      <div class="wrap">
+        <div class="review-heading">
+          <div><div class="eyebrow">Customer feedback</div><h2>Hear from our customers.</h2><p>Real words from people who brought their vehicles to JAH. Swipe or use the arrows to explore five Google reviews.</p></div>
+          <div class="review-controls" aria-label="Review navigation"><button type="button" class="review-arrow" data-review-direction="previous" aria-label="Previous review">←</button><button type="button" class="review-arrow" data-review-direction="next" aria-label="Next review">→</button></div>
+        </div>
+        <div class="review-track" aria-label="Customer review excerpts" tabindex="0">
+          <article class="review-card"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“This guy is AWESOME! We were coming from MS on the way to a concert at the Cajundome.”</blockquote><p class="review-name">Skyler Fraser</p><span class="review-source">Google review · excerpt</span></article>
+          <article class="review-card"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“He was very knowledgeable and professional. He is most def locked in as my mechanic.”</blockquote><p class="review-name">Mia Thomas</p><span class="review-source">Google review · excerpt</span></article>
+          <article class="review-card"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“He saved my road trip and the price to replace the fuel pump was really fair.”</blockquote><p class="review-name">Rodrigo R. Coelho</p><span class="review-source">Google review · excerpt</span></article>
+          <article class="review-card"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“He repaired my exterior car door handle efficiently and took time to explain the issue and next steps. Honest and reliable shop.”</blockquote><p class="review-name">Ali G.</p><span class="review-source">Google review · excerpt</span></article>
+          <article class="review-card"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>“Jah has been an incredible mechanic, bro replaced my battery when 4 other shops denied”</blockquote><p class="review-name">Chris Jones</p><span class="review-source">Google review · excerpt</span></article>
+        </div>
+        <a class="review-link" href="https://www.google.com/maps/search/?api=1&amp;query=Jah+Automotive+Llc+982+Columbus+Dunn+Dr+Baton+Rouge+LA" target="_blank" rel="noopener">Read all reviews on Google ↗</a>
+      </div>
+    </section>
     <section class="section contact" id="contact"><div class="wrap"><div><div class="eyebrow">Reach out</div><h2>Tell us what’s going on.</h2><p>For urgent help, call. For other requests, fill in the details below. The form opens your text messaging app with your details ready to send; please press Send there to finish.</p><p><a class="textlink" href="tel:+15042848289">(504) 284-8289</a><br><a class="textlink" href="https://www.google.com/maps/search/?api=1&query=Jah+Automotive+Llc+982+Columbus+Dunn+Dr+Baton+Rouge+LA" target="_blank" rel="noopener">982 Columbus Dunn Dr, Baton Rouge, LA 70802 ↗</a></p></div><div class="formbox"><h3>Service request</h3><form id="request-form"><div class="fields"><div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div><div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div></div><div class="fields"><div class="field"><label for="vehicle">Vehicle (year / make / model)</label><input id="vehicle" name="vehicle" placeholder="e.g. 2008 Pontiac G5"></div><div class="field"><label for="location">Vehicle location</label><input id="location" name="location" placeholder="City or neighborhood"></div></div><div class="field"><label for="issue">What help do you need?</label><textarea id="issue" name="issue" required></textarea></div><button class="submit" type="submit">Prepare text request</button><p class="note">This site does not store your information. You can always call instead.</p></form></div></div></section>
   </main>
   <footer><div class="wrap"><span>© <span id="year"></span> JAH Automotive LLC · Baton Rouge, LA</span><a href="#top">Back to top ↑</a></div></footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const reviewTrack = document.querySelector('.review-track');
+    document.querySelectorAll('[data-review-direction]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        const card = reviewTrack.querySelector('.review-card');
+        const gap = parseFloat(getComputedStyle(reviewTrack).columnGap) || 0;
+        reviewTrack.scrollBy({left: (card.getBoundingClientRect().width + gap) * (button.dataset.reviewDirection === 'next' ? 1 : -1), behavior: 'smooth'});
+      });
+    });
     document.getElementById('request-form').addEventListener('submit', function (event) {
       event.preventDefault();
       const data = new FormData(this);
