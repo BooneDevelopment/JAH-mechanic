@@ -53,7 +53,10 @@ button,input,textarea{font:inherit}
 .review-arrow{border:1px solid #ffffff70;background:transparent;color:#fff;border-radius:50%;width:46px;height:46px;cursor:pointer;font-size:1.35rem}
 .review-arrow:hover{background:#ffffff1c}
 .review-arrow:focus-visible,.review-track:focus-visible,.review-link:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-.review-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:2px;padding:3px 3px 17px;overscroll-behavior-inline:contain}
+.review-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:2px;padding:3px 3px 17px;overscroll-behavior-inline:contain;scrollbar-color:#60798a transparent;scrollbar-width:thin}
+.review-track::-webkit-scrollbar{height:7px}
+.review-track::-webkit-scrollbar-track{background:transparent}
+.review-track::-webkit-scrollbar-thumb{background:#60798a;border-radius:10px}
 .review-card{scroll-snap-align:start;flex:0 0 min(360px,calc(100% - 24px));display:flex;flex-direction:column;min-height:270px;background:#24394a;border:1px solid #ffffff22;border-radius:7px;padding:25px}
 .review-stars{color:var(--amber);letter-spacing:.12em;font-size:1.1rem}
 .review-card blockquote{margin:20px 0 25px;font-size:1.1rem;line-height:1.55;flex:1}
